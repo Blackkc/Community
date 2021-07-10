@@ -62,9 +62,14 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
+            <version>8.0.25</version>
         </dependency>
-
+        <!--引入flyway-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.2.4</version>
+        </dependency>
 
         <!--MyBaits-->
         <dependency>
@@ -74,13 +79,22 @@
         </dependency>
     </dependencies>
 
-
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.4</version>
+                <!--	configuration配置 url,user,password不然plugin无法正常使用			-->
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/persons</url>
+                    <user>root</user>
+                    <password>zxc</password>
+                </configuration>
             </plugin>
         </plugins>
     </build>
